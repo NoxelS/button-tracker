@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 from time import sleep     # this lets us have a time delay (see line 15)
 
-# Example Code
+# Example Code with some cleanup todo
 
 GPIO.setmode(GPIO.BCM)     # set up BCM GPIO numbering
 GPIO.setup(25, GPIO.IN)    # set GPIO25 as input (button)
