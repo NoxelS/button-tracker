@@ -1,8 +1,7 @@
-import { ShortFile } from './short-file.model';
-import { User } from './user.model';
 
 
-export class IgsResponse<T> {
+
+export class BaseResponse<T> {
     successful = true;
     data: T;
     errorMessage: string;
@@ -21,43 +20,14 @@ export class IgsResponse<T> {
     }
 }
 
-export class SuccessResponse extends IgsResponse<null> {
+export class SuccessResponse extends BaseResponse<null> {
     constructor() {
         super(null);
     }
 }
 
-export class ShortFileListResponse extends IgsResponse<ShortFile[]> {
-    constructor(id: ShortFile[]) {
-        super(id);
-    }
-}
-
-export class UserListResponse extends IgsResponse<User[]> {
-    constructor(users: User[]) {
-        super(users);
-    }
-}
-
-export class ArticleCreateResponse extends IgsResponse<string> {
-    constructor(id: string) {
-        super(id);
-    }
-}
-
-export class ErrorResponse extends IgsResponse<null> {
+export class ErrorResponse extends BaseResponse<null> {
     constructor(err: string) {
         super(null, err);
-    }
-}
-
-export class LoginResponse extends IgsResponse<User> {
-    token: string;
-    expiresIn: string;
-
-    constructor(signedToken: string, expiresIn: string, user: User) {
-        super(user);
-        this.token = 'Bearer ' + signedToken;
-        this.expiresIn = expiresIn;
     }
 }

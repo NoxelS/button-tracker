@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+import { BaseResponse } from '../models/response.model';
 import AuthRouter from './auth';
 
 
@@ -11,7 +12,7 @@ router.use('/auth', AuthRouter);
 
 /** This hase pure test purpose */
 router.post('/foo-bar', async (req, res) => {
-    res.send(req.body);
+    res.send(new BaseResponse(req.body));
 });
 
 // Export the base-router
