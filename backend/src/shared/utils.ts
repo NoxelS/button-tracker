@@ -44,7 +44,7 @@ export async function sendEmail(from: string, to: string, subject: string, html:
     });
 
     const info = await transporter.sendMail({
-        from: `"IGS" <${process.env.MAIL_USER}>`,
+        from: `"" <${process.env.MAIL_USER}>`,
         to,
         subject,
         html
