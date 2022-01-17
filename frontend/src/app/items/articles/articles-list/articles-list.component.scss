@@ -1,0 +1,120 @@
+@import '../../../../const.scss';
+
+.list {
+    width: 100%;
+    // background-color: #333;
+    .landing-wrapper {
+        height: calc(100vh - 100px);
+        // background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .landing {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 1fr;
+            // grid-template-rows: 1fr;
+            gap: 0 8vw;
+
+            @media screen and  (max-width: 1200px) {
+                display: flex;
+                width: 100%;
+            }
+
+            .source {
+                float: left;
+                position: relative;
+                right: 0px;
+                bottom: 0px;
+                z-index: 1000;
+                margin-bottom: -40px;
+                color: #fff;
+                scale: 0.8;
+                opacity: 0.75;
+                cursor: pointer;
+
+                a {
+                    color: #fff;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 5px;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                @media screen and  (max-width: 1200px) {
+                    display: none;
+                }
+            }
+
+            img {
+                align-self: center;
+                justify-self: flex-end;
+                max-width: 50vw;
+                max-height: 60vh;
+                border-radius: 10px;
+
+                @media screen and  (max-width: 1200px) {
+                    display: none;
+                }
+            }
+
+            .description {
+                align-self: center;
+                justify-self: flex-start;
+                max-width: 40vw;
+
+                @media screen and  (max-width: 1200px) {
+                    max-width: 100%;
+                }
+
+                .title {
+                    font-size: 2.3em;
+                    margin-bottom: 1.3rem;
+                    line-height: normal;
+
+                    @media screen and  (max-width: 768px) {
+                        font-size: 1.5em;
+                    }
+                }
+
+                .description {
+                    margin-top: 0.7rem;
+                    width: 100%;
+                    font-size: 1.2em;
+                    line-height: 1.8em;
+                    margin-bottom: 1.5rem;
+
+                    @media screen and  (max-width: 768px) {
+                        font-size: 1em;
+                    }
+                }
+
+                .row > *{
+                    margin-left: 1rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+
+    .grid-list {
+        // padding: 0 5vw;
+        margin-bottom: 5vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8vh 8vw;
+
+        @media screen and  (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+
+        @media screen and  (min-width: 4000px) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<div class="list">
+    <div class="landing-wrapper">
+        <div class="landing">
+            <div>
+                <div class="source" matTooltip="https://images.pexels.com/photos/3183188/pexels-photo-3183188.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+                    <a target="_blank" href="https://www.pexels.com/de-de/ueber-uns/">
+                        <mat-icon>fingerprint</mat-icon>
+                        Bildquelle
+                    </a>
+                </div>
+                <img src="https://images.pexels.com/photos/3183188/pexels-photo-3183188.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
+            </div>
+            <div class="description">
+                <div class="title">Direktorenvereinigung der Integrierten Gesamtschulen in Rheinland-Pfalz</div>
+                <div class="description">
+                    Die Direktorenvereinigung ist eine Interessenvertretung der Schulleiterinnen und Schulleiter der Integrierten Gesamtschulen in
+                    Rheinland-Pfalz. Die 55 rheinland-pfälzischen Gesamtschulen sind in sieben Regionalgruppen vernetzt. Jede Regionalgruppe bestimmt aus ihren
+                    Reihen eine Vertreterin oder einen Vertreter als Mitglied des Vorstandes der Direktorenvereinigung. Alle zwei Jahre wird in einer
+                    Versammlung aller Schulleiterinnen und Schulleiter ein/e Vorsitzende/r sowie ein/e Stellvertreterin als Landesvertreter gewählt. Die
+                    Direktorenvereinigung vertritt die Interessen der Schulen gegenüber dem Bildungsministerium, der ADD, den Personalräten und dem
+                    Landeselternbeirat. Die Regionalgruppen arbeiten selbstständig und bringen Themen in den Vorstand ein. Der Vorstand steht im mündlichen und
+                    schriftlichen Austausch mit den genannten Gremien.
+                </div>
+                <div class="row">
+                    <button mat-flat-button color="primary" (click)="scroll(gridlist)">Zu den Artikeln</button>
+                    <button *ngIf="!!user && !user.isSuperUser && user.regionalgruppe" mat-stroked-button color="primary" [routerLink]="goToRegionalgroup()">Artikel in {{user.regionalgruppe}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-list" #gridlist>
+        <div *ngFor="let article of articles" class="grid-article-item">
+            <app-article-card [article]="article"></app-article-card>
+        </div>
+    </div>
+</div>

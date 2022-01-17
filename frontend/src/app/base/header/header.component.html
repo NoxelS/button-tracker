@@ -1,0 +1,73 @@
+<div class="header">
+    <div class="title" routerLink="/">
+        <div class="left">IGS</div>
+        <div class="right">
+            Direktorenvereinigung der <br />
+            Integrierten Gesamtschulen in Rheinland-Pfalz
+        </div>
+    </div>
+    <div class="buttons">
+        <!-- Artikel -->
+        <button mat-button [matMenuTriggerFor]="articles" [class.routerLinkActiveClass]="rlaArtikel1.isActive">Artikel</button>
+        <mat-menu #articles="matMenu" yPosition="above">
+            <button mat-menu-item [routerLink]="routes.ARTICLES" routerLinkActive="routerLinkActiveClass" #rlaArtikel1="routerLinkActive">Startseite</button>
+            <hr />
+            <button mat-menu-item isLoggedIn [routerLink]="routes.LATEST_NEWS" routerLinkActive="routerLinkActiveClass" #rlaArtikel1="routerLinkActive">
+                Aktuelle Themen
+            </button>
+
+            <button mat-menu-item [matMenuTriggerFor]="alle">Durchsuchen</button>
+            <mat-menu #alle="matMenu" yPosition="below">
+                <button
+                    mat-menu-item
+                    *ngFor="let article of articlesArray"
+                    [routerLink]="getArticleLink(article)"
+                    routerLinkActive="routerLinkActiveClass"
+                    #rlaArtikel2="routerLinkActive"
+                >
+                    {{ article.title }}
+                </button>
+            </mat-menu>
+
+            <ng-container *ngIf="!!user">
+                <ng-container *ngFor="let regionalgruppe of usersRegionalgroups">
+                    <button
+                        mat-menu-item
+                        isLoggedIn
+                        [routerLink]="getLinkToRegionalGroup(regionalgruppe)"
+                        routerLinkActive="routerLinkActiveClass"
+                        #rlaArtikel2="routerLinkActive"
+                    >
+                        {{ regionalgruppe }}
+                    </button>
+                </ng-container>
+            </ng-container>
+
+            <hr isLoggedIn />
+            <button [routerLink]="routes.ARTICLE_CREATE" mat-menu-item isLoggedIn>Artikel erstellen</button>
+        </mat-menu>
+        <!-- Dateiablage -->
+        <button mat-button isLoggedIn [routerLink]="routes.FILES" routerLinkActive="routerLinkActiveClass">Dateiablage</button>
+        <!-- Superuser -->
+        <ng-container *ngIf="user && !!user.isSuperUser">
+            <button mat-button [matMenuTriggerFor]="adminMenu">Adminbereich</button>
+            <mat-menu #adminMenu="matMenu" yPosition="above">
+                <button [routerLink]="routes.USERMANAGEMENT" mat-menu-item>Benutzer verwalten</button>
+                <button [routerLink]="routes.SERVERMANAGEMENT" mat-menu-item>Server verwalten</button>
+            </mat-menu>
+        </ng-container>
+        <!-- Über uns -->
+        <button mat-button [matMenuTriggerFor]="aboveMenu">Über uns</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+            <button [routerLink]="routes.ABOUT" mat-menu-item>Kontakt</button>
+            <button [routerLink]="routes.IMPRESSUM" mat-menu-item>Impressum</button>
+        </mat-menu>
+        <!-- Login -->
+        <button mat-button [matMenuTriggerFor]="afterMenu">
+            <mat-icon [color]="!!user ? (user.isSuperUser ? 'accent' : 'primary') : 'default'">{{ !!user ? (user.isSuperUser ? 'admin_panel_settings' : 'account_circle') : 'account_circle'}}</mat-icon> {{ !!user ? user.name : '' }}
+        </button>
+        <mat-menu #afterMenu="matMenu" xPosition="after">
+            <igs-login></igs-login>
+        </mat-menu>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div #top></div>
+<div class="read-container" *ngIf="article">
+    <div class="title">
+        <h1><div>{{ article.title }}</div> <share-button [refrence]="article"></share-button> <span *ngIf="canEditOrDeleteArticle()" [routerLink]="getEditArticleLink()">Bearbeiten</span></h1>
+        <div class="icons">
+            <div><mat-icon>timelapse</mat-icon>{{ article.creationDate }}</div>
+            <div>•</div>
+            <div><mat-icon>person</mat-icon>{{ article.authorName || 'Unbekannt' }}</div>
+            <div>•</div>
+            <div><mat-icon>hourglass_top</mat-icon>{{ getReadTime(article.content) }} min</div>
+            <div *ngIf="scopeIsSpecial()">•</div>
+            <div *ngIf="scopeIsSpecial()"><mat-icon>place</mat-icon>{{ article.scope }}</div>
+        </div>
+        <div class="image">
+            <div class="source" [matTooltip]="article.imageUrl">
+                <a target="_blank" href="https://www.pexels.com/de-de/ueber-uns/">
+                    <mat-icon>fingerprint</mat-icon>
+                    Bildquelle
+                </a>
+            </div>
+            <img src="{{ article.imageUrl }}" alt="" />
+        </div>
+    </div>
+
+    <div *ngIf="!!article.description" class="description">
+        {{ article.description }}
+    </div>
+    <hr *ngIf="!!article.description"/>
+    <p class="content">
+        <markdown [data]="article.content" class="content"></markdown>
+    </p>
+</div>
