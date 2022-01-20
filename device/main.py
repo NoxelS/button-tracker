@@ -35,12 +35,16 @@ try:
     while True:            # this will carry on until you hit CTRL+C
         if GPIO.input(18):
             currentlySelected = 1
+            print("1")
         if GPIO.input(23):
             currentlySelected = 2
+            print("2")
         if GPIO.input(24):
             currentlySelected = 3
+            print("3")
         if GPIO.input(25):
             currentlySelected = 4
+            print("4")
         if currentlySelected == 1:
             GPIO.output(4, 1)
             GPIO.output(17, 0)
