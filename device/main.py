@@ -18,9 +18,9 @@ try:
     while True:            # this will carry on until you hit CTRL+C
         if GPIO.input(25):  # if port 25 == 1
             headers = {"charset": "utf-8", "Content-Type": "application/json"}
-            url = 'http://192.168.0.14:3000/foo-bar'
-            r = requests.post(url, json={'foo': 'bar'}, headers=headers)
-            print(r.text)
+            url = "http://192.168.0.14:3000/foo-bar"
+            r = requests.post(url, json={"foo": "bar"}, headers=headers)
+            print(r.status_code)
             GPIO.output(24, 1)         # set port/pin value to 1/HIGH/True
         else:
             GPIO.output(24, 0)         # set port/pin value to 0/LOW/False
