@@ -15,5 +15,9 @@ router.post('/foo-bar', async (req, res) => {
     res.send(new BaseResponse(req.body));
 });
 
+router.get('/foo-bar', async (req, res) => {
+    res.send('Test');
+});
+
 // Export the base-router
 export default router;

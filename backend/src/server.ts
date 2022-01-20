@@ -91,7 +91,7 @@ passport.use(
 app.use(setLocals);
 
 // Add APIs
-app.use('/api', ApiRouter);
+app.use('/', ApiRouter);
 
 // Print API errors
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
