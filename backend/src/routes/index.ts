@@ -12,11 +12,8 @@ router.use('/auth', AuthRouter);
 
 /** This hase pure test purpose */
 router.post('/foo-bar', async (req, res) => {
+    console.log("Got a new state: " + req.body.state);
     res.send(new BaseResponse(req.body));
-});
-
-router.get('/foo-bar', async (req, res) => {
-    res.send('Test');
 });
 
 // Export the base-router
