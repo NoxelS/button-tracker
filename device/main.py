@@ -66,11 +66,17 @@ try:
             GPIO.output(27, 0)
             GPIO.output(22, 0)
         
+        # Indefinit state
         if currentlySelected == 0:
             GPIO.output(4, 1)
             GPIO.output(17, 1)
             GPIO.output(27, 1)
             GPIO.output(22, 1)
+            sleep(0.1)
+            GPIO.output(4, 0)
+            GPIO.output(17, 0)
+            GPIO.output(27, 0)
+            GPIO.output(22, 0)
         sleep(0.1)         # wait 0.1 seconds
 
 finally:                   # this block will run no matter how the try block exits
