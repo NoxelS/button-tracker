@@ -38,7 +38,7 @@ try:
             print(r.body)
         if GPIO.input(23):
             currentlySelected = 2
-             r = requests.post(url, json={"state": "2"}, headers=headers)
+            r = requests.post(url, json={"state": "2"}, headers=headers)
             print(r.body)
         if GPIO.input(24):
             currentlySelected = 3
