@@ -35,19 +35,19 @@ try:
         if GPIO.input(18):
             currentlySelected = 1
             r = requests.post(url, json={"state": "1"}, headers=headers)
-            print(r.body)
+            print(r.json())
         if GPIO.input(23):
             currentlySelected = 2
             r = requests.post(url, json={"state": "2"}, headers=headers)
-            print(r.body)
+            print(r.json())
         if GPIO.input(24):
             currentlySelected = 3
             r = requests.post(url, json={"state": "3"}, headers=headers)
-            print(r.body)
+            print(r.json())
         if GPIO.input(25):
             currentlySelected = 4
             r = requests.post(url, json={"state": "4"}, headers=headers)
-            print(r.body)
+            print(r.json())
         if currentlySelected == 1:
             GPIO.output(4, 0)
             GPIO.output(17, 0)
