@@ -34,44 +34,40 @@ try:
     while True:            # this will carry on until you hit CTRL+C
         if GPIO.input(18):
             currentlySelected = 1
-            print("1")
+            r = requests.post(url, json={"state": "1"}, headers=headers)
+            print(r.body)
         if GPIO.input(23):
             currentlySelected = 2
-            print("2")
+             r = requests.post(url, json={"state": "2"}, headers=headers)
+            print(r.body)
         if GPIO.input(24):
             currentlySelected = 3
-            print("3")
+            r = requests.post(url, json={"state": "3"}, headers=headers)
+            print(r.body)
         if GPIO.input(25):
             currentlySelected = 4
-            print("4")
+            r = requests.post(url, json={"state": "4"}, headers=headers)
+            print(r.body)
         if currentlySelected == 1:
             GPIO.output(4, 0)
             GPIO.output(17, 0)
             GPIO.output(27, 0)
             GPIO.output(22, 1)
-            r = requests.post(url, json={"state": "1"}, headers=headers)
-            print(r)
         if currentlySelected == 2:
             GPIO.output(4, 0)
             GPIO.output(17, 0)
             GPIO.output(27, 1)
             GPIO.output(22, 0)
-            r = requests.post(url, json={"state": "2"}, headers=headers)
-            print(r)
         if currentlySelected == 3:
             GPIO.output(4, 0)
             GPIO.output(17, 1)
             GPIO.output(27, 0)
             GPIO.output(22, 0)
-            r = requests.post(url, json={"state": "3"}, headers=headers)
-            print(r)
         if currentlySelected == 4:
             GPIO.output(4, 1)
             GPIO.output(17, 0)
             GPIO.output(27, 0)
             GPIO.output(22, 0)
-            r = requests.post(url, json={"state": "4"}, headers=headers)
-            print(r)
         
         # Indefinit state
         if currentlySelected == 0:
