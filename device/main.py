@@ -15,10 +15,10 @@ GPIO.setup(24, GPIO.IN)    # 3
 GPIO.setup(25, GPIO.IN)    # 4
 
 # Outputs
-GPIO.setup(4, GPIO.OUT)    # 1
-GPIO.setup(17, GPIO.OUT)   # 2
-GPIO.setup(27, GPIO.OUT)   # 3
-GPIO.setup(22, GPIO.OUT)   # 4
+GPIO.setup(4, GPIO.OUT)    # 4
+GPIO.setup(17, GPIO.OUT)   # 3
+GPIO.setup(27, GPIO.OUT)   # 2
+GPIO.setup(22, GPIO.OUT)   # 1
 
 # Set initial input/outputs
 # @todo
@@ -46,25 +46,25 @@ try:
             currentlySelected = 4
             print("4")
         if currentlySelected == 1:
-            GPIO.output(4, 1)
-            GPIO.output(17, 0)
-            GPIO.output(27, 0)
-            GPIO.output(22, 0)
-        if currentlySelected == 2:
-            GPIO.output(4, 0)
-            GPIO.output(17, 1)
-            GPIO.output(27, 0)
-            GPIO.output(22, 0)
-        if currentlySelected == 3:
-            GPIO.output(4, 0)
-            GPIO.output(17, 0)
-            GPIO.output(27, 1)
-            GPIO.output(22, 0)
-        if currentlySelected == 4:
             GPIO.output(4, 0)
             GPIO.output(17, 0)
             GPIO.output(27, 0)
             GPIO.output(22, 1)
+        if currentlySelected == 2:
+            GPIO.output(4, 0)
+            GPIO.output(17, 0)
+            GPIO.output(27, 1)
+            GPIO.output(22, 0)
+        if currentlySelected == 3:
+            GPIO.output(4, 0)
+            GPIO.output(17, 1)
+            GPIO.output(27, 0)
+            GPIO.output(22, 0)
+        if currentlySelected == 4:
+            GPIO.output(4, 1)
+            GPIO.output(17, 0)
+            GPIO.output(27, 0)
+            GPIO.output(22, 0)
         
         if currentlySelected == 0:
             GPIO.output(4, 1)
