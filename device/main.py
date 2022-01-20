@@ -25,10 +25,9 @@ GPIO.setup(22, GPIO.OUT)   # 1
 
 currentlySelected = 0
 
-# headers = {"charset": "utf-8", "Content-Type": "application/json"}
-# url = "http://192.168.0.14:3000/foo-bar"
-# r = requests.post(url, json={"foo": "bar"}, headers=headers)
-# print(r.status_code)
+headers = {"charset": "utf-8", "Content-Type": "application/json"}
+url = "http://192.168.0.14:3000/foo-bar"
+
 
 # Check for inputs
 try:
@@ -50,21 +49,29 @@ try:
             GPIO.output(17, 0)
             GPIO.output(27, 0)
             GPIO.output(22, 1)
+            r = requests.post(url, json={"state": "1"}, headers=headers)
+            print(r)
         if currentlySelected == 2:
             GPIO.output(4, 0)
             GPIO.output(17, 0)
             GPIO.output(27, 1)
             GPIO.output(22, 0)
+            r = requests.post(url, json={"state": "2"}, headers=headers)
+            print(r)
         if currentlySelected == 3:
             GPIO.output(4, 0)
             GPIO.output(17, 1)
             GPIO.output(27, 0)
             GPIO.output(22, 0)
+            r = requests.post(url, json={"state": "3"}, headers=headers)
+            print(r)
         if currentlySelected == 4:
             GPIO.output(4, 1)
             GPIO.output(17, 0)
             GPIO.output(27, 0)
             GPIO.output(22, 0)
+            r = requests.post(url, json={"state": "4"}, headers=headers)
+            print(r)
         
         # Indefinit state
         if currentlySelected == 0:
